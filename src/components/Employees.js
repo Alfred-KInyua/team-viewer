@@ -4,6 +4,7 @@ import male from './imgassets/males.jpeg';
 import female from './imgassets/females.png';
 
 function Employees() {
+  const [team, setTeam] = useState('TeamB');
   const [employee, setEmployees] = useState([
     {
       id: 1,
@@ -97,9 +98,25 @@ function Employees() {
       teamName: 'Team4',
     },
   ]);
+  const handleTeamSelection = (event) => {
+    console.log(event.target.value);
+    setTeam(event.target.value);
+  };
   return (
     <main className="container">
       <div class="row justify-content-center mt-3 mb-3">
+        <div class="col-6 mb-3">
+          <select
+            className="form-select form-select-lg"
+            value={team}
+            onChange={handleTeamSelection}
+          >
+            <option value="TeamA">TeamA</option>
+            <option value="TeamB">TeamB</option>
+            <option value="TeamC">TeamC</option>
+            <option value="TeamD">TeamD</option>
+          </select>
+        </div>
         <div class="col-8">
           <div className="card-collection">
             {employee.map((devs) => (
