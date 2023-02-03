@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import picha from './imgassets/males.png';
+import male from './imgassets/males.jpeg';
+import female from './imgassets/females.png';
 
 function Employees() {
   const [employee, setEmployees] = useState([
@@ -98,17 +99,25 @@ function Employees() {
   ]);
   return (
     <main className="container">
-      <div class="row">
+      <div class="row justify-content-center mt-3 mb-3">
         <div class="col-8">
-          {employee.map((devs) => (
-            <div key={devs.id} className="card">
-              <img src={picha} alt="profile" className="card-img-top" />
-              <div className="card-title">
-                {' '}
-                <strong>Full Name: {devs.fullname}</strong>
+          <div className="card-collection">
+            {employee.map((devs) => (
+              <div key={devs.id} className="card">
+                {devs.Gender === 'Male' ? (
+                  <img src={male} alt="profile" className="card-img-top" />
+                ) : (
+                  <img src={female} alt="profile" className="card-img-top" />
+                )}
+                <h5 className="card-title"> Full Name: {devs.fullname}</h5>
+                <p className="card-text">
+                  {' '}
+                  <b>Designation</b>
+                  {devs.designation}
+                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </main>
