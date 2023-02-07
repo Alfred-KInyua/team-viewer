@@ -1,10 +1,9 @@
-import React from 'react';
 import { useState } from 'react';
 import male from './imgassets/males.jpeg';
 import female from './imgassets/females.png';
 
 function Employees() {
-  const [team, setTeam] = useState('TeamB');
+  const [selectedTeam, setTeam] = useState('TeamB');
   const [employee, setEmployees] = useState([
     {
       id: 1,
@@ -99,16 +98,25 @@ function Employees() {
     },
   ]);
   const handleTeamSelection = (event) => {
-    console.log(event.target.value);
     setTeam(event.target.value);
+  };
+  const handleEmployee = (event) => {
+    const transformedArray = employee.map((employee) =>
+      employee.id === parseInt(event.currentTarget.id)
+        ? employee.teamName === selectedTeam
+          ? { ...employee, teamName: '' }
+          : { ...employee, teamName: selectedTeam }
+        : employee
+    );
+    setEmployees(transformedArray);
   };
   return (
     <main className="container">
-      <div class="row justify-content-center mt-3 mb-3">
-        <div class="col-6 mb-3">
+      <div className="row justify-content-center mt-3 mb-3">
+        <div className="col-6 mb-3">
           <select
             className="form-select form-select-lg"
-            value={team}
+            value={selectedTeam}
             onChange={handleTeamSelection}
           >
             <option value="TeamA">TeamA</option>
@@ -117,10 +125,19 @@ function Employees() {
             <option value="TeamD">TeamD</option>
           </select>
         </div>
-        <div class="col-8">
+        <div className="col-8">
           <div className="card-collection">
             {employee.map((devs) => (
-              <div key={devs.id} className="card">
+              <div
+                id={devs.id}
+                className={
+                  devs.teamName === selectedTeam
+                    ? 'card m-2 standout'
+                    : 'card m-2'
+                }
+                style={{ cursor: 'pointer' }}
+                onClick={handleEmployee}
+              >
                 {devs.Gender === 'Male' ? (
                   <img src={male} alt="profile" className="card-img-top" />
                 ) : (
