@@ -1,0 +1,6 @@
+.card-collection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+  cursor: pointer;
+}
