@@ -1,9 +1,14 @@
 import React from 'react';
 
-function Header() {
+function Header({ selectedTeam }) {
   return (
-    <header>
-      <h1 className="mt-4 p5 bg-primary text-white rounded">Header section</h1>
+    <header className="container">
+      <div className="d-flex flex-column align-items-center">
+        <h1>Team Member Allocation</h1>
+        <h3>
+          {selectedTeam} has {} members
+        </h3>
+      </div>
     </header>
   );
 }
