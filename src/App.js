@@ -112,9 +112,15 @@ function App() {
     );
     setEmployees(transformedArray);
   };
+
   return (
     <>
-      <Header selectedTeam={selectedTeam} />
+      <Header
+        selectedTeam={selectedTeam}
+        teamMemberCount={
+          employee.filter((emp) => emp.teamName === selectedTeam).length
+        }
+      />
 
       <Employees
         handleEmployee={handleEmployee}
