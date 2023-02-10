@@ -5,6 +5,7 @@ import Employees from './components/Employees';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GroupedTeamMembers from './components/GroupedTeamMembers';
+import Nav from './components/Nav';
 
 function App() {
   const [selectedTeam, setTeam] = useState(
@@ -129,6 +130,7 @@ function App() {
 
   return (
     <Router>
+      <Nav />
       <Header
         selectedTeam={selectedTeam}
         teamMemberCount={
