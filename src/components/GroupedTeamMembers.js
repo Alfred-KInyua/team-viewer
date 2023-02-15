@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-
-function GroupedTeamMembers({ employees, selectedTeams, setTeams }) {
-  const [groupedEmployees, groupedData] = useState();
+function GroupedTeamMembers() {
   return (
     <header className="container">
       <div className="d-flex flex-column align-items-center">
